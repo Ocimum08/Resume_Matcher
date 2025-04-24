@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: resume-matcher
-    runtime: python
-    plan: free
-    buildCommand: ""
-    startCommand: gunicorn app:app
