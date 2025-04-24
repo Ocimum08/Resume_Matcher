@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Centered Login Box -->
+<div class="flex items-center justify-center min-h-[70vh]">
+  <div class="w-full max-w-md bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+
+    <h2 class="text-2xl font-bold text-center mb-4 text-gray-900 dark:text-white">Login</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="mb-4">
+          {% for category, message in messages %}
+            <div class="p-3 rounded text-sm
+              {% if category == 'error' %}
+                bg-red-100 text-red-700
+              {% else %}
+                bg-green-100 text-green-700
+              {% endif %}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="space-y-4">
+
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        class="input bg-gray-50 dark:bg-gray-700 dark:text-white"
+        required
+      />
+
+      <div class="relative">
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Password"
+          class="input bg-gray-50 dark:bg-gray-700 dark:text-white pr-10"
+          required
+        />
+        <span
+          onclick="togglePassword()"
+          class="absolute inset-y-0 right-3 flex items-center cursor-pointer text-gray-500 dark:text-gray-300"
+          title="Toggle password"
+        >
+          👁️
+        </span>
+      </div>
+
+      <div class="flex items-center">
+        <input type="checkbox" id="remember" name="remember" class="mr-2" />
+        <label for="remember" class="text-sm text-gray-700 dark:text-gray-300">Remember Me</label>
+      </div>
+
+      <button type="submit" class="btn w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold">
+        Login
+      </button>
+
+      <p class="mt-4 text-sm text-center text-gray-700 dark:text-gray-300">
+        Don't have an account?
+        <a href="{{ url_for('signup') }}" class="text-blue-500 hover:underline">Signup</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+<script>
+  function togglePassword() {
+    const passwordInput = document.getElementById("password");
+    passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+  }
+</script>
+
+{% endblock %}

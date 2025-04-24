@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-md mx-auto mt-10 bg-white p-6 rounded-lg shadow-lg">
+  <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Matching Result</h2>
+
+  <div class="text-center text-lg text-gray-700 mb-4">
+    Match Score: <strong>{{ score }}%</strong>
+  </div>
+
+  <!-- Visual Progress Bar -->
+  <div class="w-full bg-gray-200 rounded-full h-4 mb-6">
+    <div class="bg-blue-500 h-4 rounded-full" style="width: {{ score }}%;"></div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="flex justify-center space-x-4">
+    <a href="{{ download_link }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition duration-200">
+      📄 Download Result
+    </a>
+    <a href="/" class="text-blue-600 hover:underline font-medium">
+      ⬅ Back
+    </a>
+  </div>
+</div>
+{% endblock %}

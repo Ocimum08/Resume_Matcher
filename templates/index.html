@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Centered Resume Matcher Form -->
+<div class="flex items-center justify-center min-h-[70vh] px-4">
+  <div class="w-full max-w-md bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+
+    <h2 class="text-2xl font-bold text-center mb-4 text-gray-900 dark:text-white">Resume Matcher</h2>
+
+    <form action="/match" method="post" enctype="multipart/form-data" class="space-y-4">
+
+      <div>
+        <label class="block mb-1 text-gray-700 dark:text-gray-300 font-medium">Upload Resume (PDF):</label>
+        <input type="file" name="resume" class="input bg-gray-50 dark:bg-gray-700 dark:text-white" required />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-gray-700 dark:text-gray-300 font-medium">Paste Job Description:</label>
+        <textarea
+          name="job_desc"
+          rows="6"
+          class="input bg-gray-50 dark:bg-gray-700 dark:text-white w-full resize-none"
+          placeholder="Paste the job description here..."
+          required
+        ></textarea>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <button type="submit" class="btn bg-blue-600 hover:bg-blue-700 text-white font-semibold">
+          Match
+        </button>
+        <a href="/logout" class="text-blue-500 hover:underline text-sm">Logout</a>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
