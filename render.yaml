@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: resume-matcher
-    runtime: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
-    repo: https://github.com/Ocimum08/Resume_Matcher.git
-    branch: main
